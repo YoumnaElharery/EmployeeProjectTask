@@ -1,0 +1,36 @@
+﻿@model List<EmployeeProjectTask.Shared.Models.Employee>
+
+<h2 class="text-center mb-4">Employee List</h2>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            int index = 1;
+            foreach (var emp in Model)
+            {
+                <tr>
+                    <td>@index</td>
+                    <td>@emp.Name</td>
+                    <td>@emp.Department</td>
+                    <td>$@String.Format("{0:0.00}", emp.Salary)</td>
+                </tr>
+                index++;
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center">No employees found.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Employee/Add" class="btn btn-primary mt-3">Add New Employee</a>

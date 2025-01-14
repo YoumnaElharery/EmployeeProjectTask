@@ -1,0 +1,37 @@
+﻿<h2 class="text-center mb-4">Add New Employee</h2>
+<form asp-action="Add" class="needs-validation" novalidate>
+    <div class="mb-3">
+        <label for="Name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="Name" name="Name" placeholder="Enter employee name" required>
+        <div class="invalid-feedback">Please provide a name.</div>
+    </div>
+    <div class="mb-3">
+        <label for="Department" class="form-label">Department</label>
+        <input type="text" class="form-control" id="Department" name="Department" placeholder="Enter department" required>
+        <div class="invalid-feedback">Please provide a department.</div>
+    </div>
+    <div class="mb-3">
+        <label for="Salary" class="form-label">Salary</label>
+        <input type="number" class="form-control" id="Salary" name="Salary" placeholder="Enter salary" step="0.01" required>
+        <div class="invalid-feedback">Please provide a valid salary.</div>
+    </div>
+    <button type="submit" class="btn btn-success">Save Employee</button>
+    <a href="/Employee/List" class="btn btn-secondary">Back to List</a>
+</form>
+
+<script>
+    // Bootstrap form validation
+    (function () {
+        'use strict'
+        var forms = document.querySelectorAll('.needs-validation')
+        Array.prototype.slice.call(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>
